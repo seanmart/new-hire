@@ -8,8 +8,9 @@
 
 <script>
 export default {
-  middleware({store,redirect}){
-    if (store.state.user) store.dispatch('REMOVE_USER')
+  created(){
+    if (process.server) return 
+    if (this.$store.state.user) this.$store.dispatch('REMOVE_USER')
   }
 }
 </script>

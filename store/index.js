@@ -1,7 +1,7 @@
 export default{
   state:()=>({
     user:null,
-    tasks:[]
+    tasks:null
   }),
   mutations:{
     USER:(state,user)=> state.user = user,
@@ -66,7 +66,8 @@ export default{
       this.$cookiz.remove('user')
       commit('USER',null)
     },
-    nuxtServerInit({commit}){
+    nuxtClientInit({commit}){
+      console.log('this rran')
       let user = this.$cookiz.get('user')
       user && commit('USER',user)
     }

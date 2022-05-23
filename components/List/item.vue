@@ -56,13 +56,21 @@
         this.busy = true
 
         let nextActive = !this.active
+        let start = Date.now()
+        let delay = 250
+        let res = await this.$store.dispatch('TOGGLE_TASK',{id:this.data.id,add:nextActive})
+        let end = Date.now()
 
-        setTimeout(()=>{
-          this.active = nextActive
-          this.busy = false
-        },200)
-        
-        await this.$store.dispatch('TOGGLE_TASK',{id:this.data.id,add:nextActive})
+        if(res.success){
+
+            setTimeout(()=>{
+              this.active = nextActive
+              this.busy = false
+            },Math.max(delay - (end - start),0))
+
+        } else {
+
+        }
       }
     }
   }

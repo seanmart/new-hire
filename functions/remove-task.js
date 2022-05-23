@@ -5,33 +5,30 @@ var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('appgG93eKy
 exports.handler = async function (event, context) {
 
   const {personId, taskId} = JSON.parse(event.body);
+  
+  let error = 'not found'
+  let success = null
 
-  try{
+  let data = await base("Complete").select({
+    filterByFormula: `AND({Person} = '${personId}', {Task} = '${taskId}')`
+  }).all()
 
-    let error = null
-    let success = null
+  if (Array.isArray(data)){
 
-    let data = await base("Complete").select({
-      filterByFormula: `AND({Person} = '${personId}', {Task} = '${taskId}')`
-    }).all()
-
-    if (Array.isArray(data)){
-      await base('Complete').destroy(data[0].id,(err,record)=> {
-        error = err;
-        success = record
+    async function removeData(){
+      return new Promise((done)=>{
+        base('Complete').destroy(data[0].id,(error,success)=> done({error,success}))
       })
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ error,success }),
-    };
-
-  } catch(err){
-    console.log(err)
-    return {
-      statusCode: 400, 
-      body: JSON.stringify({ err })
-    };
+    let res = await removeData()
+    success = res.success 
+    error = res.error
+    
   }
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ success,error }),
+  };
 }
