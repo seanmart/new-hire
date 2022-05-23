@@ -1,14 +1,14 @@
 <template>
-  <Container class="bg-white" :loaded="!!user && !!tasks">
+  <Container class="bg-white" :loaded="!!tasks">
     <div class="max-w-3xl mx-auto p-10">
 
-      <h1 class="text-4xl" v-if="user">
-        <span>Hello,</span>
-        <span class="whitespace-nowrap">{{user['First Name']}}</span>
+      <h1 class="text-4xl">
+        <span>Hello</span>
+        <span v-if="name" class="whitespace-nowrap">, {{name}}</span>
       </h1>
       <div>
           <ListGroup 
-          v-for="(group,a) in groupedTasks" 
+          v-for="(group,a) in tasks" 
           :key="a" :label="group.label">
 
               <ListItem 
@@ -23,30 +23,26 @@
 </template>
 
 <script>
-  import { timingSafeEqual } from 'crypto'
-import {mapState} from 'vuex'
+
   export default {
     async created(){
       if (process.server) return 
 
-      if (this.$store.state.user){
+      let user = this.$cookiz.get('user')
+      if (user){
         await this.$store.dispatch('GET_TASKS')
       } else {
         this.$router.push('/')
       }
     },
     computed:{ 
-      ...mapState({
-        user: state => state.user,
-        tasks: state => state.tasks
-      }),
-      groupedTasks(){
-        if (!this.tasks) return 
-        
+      tasks(){
+        let tasks = this.$store.state.tasks
+        if (!tasks) return null
+
         let groups = {}
-        let sorted = [...this.tasks].sort((a,b)=> (a.Group > b.Group) ? 1 : -1)
   
-        sorted.forEach(task => {
+        tasks.forEach(task => {
           if(!groups[task.Group]) groups[task.Group] = []
           groups[task.Group].push(task)
         })
@@ -54,6 +50,11 @@ import {mapState} from 'vuex'
         return Object.keys(groups).map(key => {
           return {label:key,tasks: groups[key]}
         })
+      },
+      name(){
+        let user = this.$cookiz.get('user')
+        if (user) return user['First Name']
+        return null
       }
     }
   }

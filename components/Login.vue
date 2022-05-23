@@ -9,7 +9,7 @@
     <div class="min-h-3">
 
       <div v-if="busy" class="flex items-center justify-center" >
-        <Loading/>
+        <Loading spin/>
       </div>
 
       <form v-else class="login-form flex items-center justify-center" @submit="handleSubmit" :class="{error}">
@@ -35,9 +35,9 @@ export default {
       e.preventDefault()
       this.busy = true
       this.error = false
-      await this.$store.dispatch('GET_USER',this.email)
+      let user = await this.$store.dispatch('GET_USER',this.email)
       
-      if(this.$store.state.user){
+      if(user){
         this.$router.push('/home')
       } else {
         this.email = null

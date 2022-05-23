@@ -1,16 +1,15 @@
 <template lang="html">
-  <Container class="bg-orange" screen>
-    <div class="h-full flex items-center justify-center">
+  <Container class="bg-orange" screen center>
       <Login/>
-    </div>
   </Container>
 </template>
 
 <script>
 export default {
   created(){
-    if (process.server) return 
-    if (this.$store.state.user) this.$store.dispatch('REMOVE_USER')
+    if (process.server) return
+    let user = this.$cookiz.get('user') 
+    if (user) this.$store.dispatch('REMOVE_USER')
   }
 }
 </script>

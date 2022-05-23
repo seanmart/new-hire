@@ -9,7 +9,7 @@
         
         <transition name="item">
 
-          <Loading v-if="busy"/>
+          <Loading spin v-if="busy"/>
 
           <div v-else>
             <svg  xmlns="http://www.w3.org/2000/svg" :class="{'hidden': !active}" viewBox="0 0 256 256" class="fill-fuchsia block w-full">
@@ -61,7 +61,7 @@
         let res = await this.$store.dispatch('TOGGLE_TASK',{id:this.data.id,add:nextActive})
         let end = Date.now()
 
-        if(res.success){
+        if(res){
 
             setTimeout(()=>{
               this.active = nextActive
@@ -69,8 +69,9 @@
             },Math.max(delay - (end - start),0))
 
         } else {
-
+          this.$nuxt.error({ statusCode: 404 })
         }
+
       }
     }
   }
