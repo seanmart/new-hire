@@ -18,7 +18,7 @@ export default {
     ]
   },
   publicRuntimeConfig: {
-    baseUrl: process.env.NODE_ENV == 'production' ? 'http://localhost:8888' : 'http://localhost:8888'
+    baseUrl: process.env.NODE_ENV == 'production' ? 'https://new-hire.netlify.app' : 'http://localhost:8888'
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
