@@ -8,6 +8,7 @@ export default{
   mutations:{
     USER:(state,user)=> state.user = user,
     TASKS:(state,tasks)=> state.tasks = tasks,
+    UPDATE_TASK:(state,[index, value]) => state.tasks[index].completed = value
   },
   actions:{
     async GET_USER({dispatch,commit},email){
@@ -36,7 +37,7 @@ export default{
       if(res.ok){
         let {data,error} = await res.json()
         if (!error){
-          commit('TASKS',data)
+          commit('TASKS',data.map((task,i) => ({...task,index: i})))
           return
         }
       }
