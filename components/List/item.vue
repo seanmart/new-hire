@@ -1,7 +1,7 @@
 <template>
   <div 
   class="shadow px-3 py-2 min-h-4 mb-1 border-t border-b sm:border border-shade-200 sm:rounded flex items-center cursor-pointer relative" 
-  :class="{'bg-fuchsia-50 border-fuchsia-300 text-fuchsia-800':data.completed}">
+  :class="{'bg-fuchsia-50 border-fuchsia-200 text-fuchsia-800':data.completed}">
 
     <button class="absolute inset-0 z-10" @click="handleClick"/>
 
@@ -16,7 +16,7 @@
     <h5 class="sm:text-lg flex-auto mr-auto" v-html="data.Task" />
 
     <a 
-    :class="{'opacity-50 pointer-events-none': data.completed}"
+    :class="{'opacity-0 pointer-events-none': data.completed}"
     :href="data.Link" 
     target="_blank" 
     class="relative z-20 ml-5 button bg-pink text-white" 

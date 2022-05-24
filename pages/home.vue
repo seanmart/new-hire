@@ -2,9 +2,9 @@
   <Container class="bg-white" :loaded="!!tasks">
     <div class="max-w-3xl mx-auto py-10 sm:px-5">
 
-      <h1 class="text-4xl text-center sm:text-left" v-if="name">
-        <span>Hello,</span>
-        <span class="whitespace-nowrap"> {{name}}</span>
+      <h1 class="text-4xl text-center" v-if="name">
+        <span>Welcome,</span>
+        <span class="whitespace-nowrap"> {{name}}!</span>
       </h1>
       <div>
           <ListGroup 
