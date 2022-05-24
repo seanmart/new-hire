@@ -1,6 +1,6 @@
 <template>
-  <div v-if="spin" class="loader-spin w-10">
-    <div v-for="i in 4" :key="i"/>
+  <div v-if="spin" class="loader-spin w-8 h-8 sm:w-10 sm:h-10">
+    <div v-for="i in 4" :key="i" class="w-6 h-6 sm:w-8 sm:h-8" />
   </div>
   <div v-else class="loader-dots">
     <div v-for="i in 4" :key="i"/>
@@ -19,16 +19,12 @@
 .loader-spin {
   display: inline-block;
   position: relative;
-  width: 40px;
-  height: 40px;
   opacity: .5;
 }
 .loader-spin div {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 32px;
-  height: 32px;
   margin: 4px;
   border: 4px solid theme('colors.pink');
   border-radius: 50%;

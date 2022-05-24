@@ -36,6 +36,9 @@ module.exports = {
         15: '15rem',
         20: '20rem'
       },
+      padding:{
+        full: '100%'
+      },
       fill:(theme)=>({
         fuchsia: theme('colors.fuchsia.700'),
         green: theme('colors.green.800'),

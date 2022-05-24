@@ -1,8 +1,8 @@
 <template>
   <Container class="bg-white" :loaded="!!tasks">
-    <div class="max-w-3xl mx-auto p-10">
+    <div class="max-w-3xl mx-auto py-10 sm:px-5">
 
-      <h1 class="text-4xl" v-if="name">
+      <h1 class="text-4xl text-center sm:text-left" v-if="name">
         <span>Hello,</span>
         <span class="whitespace-nowrap"> {{name}}</span>
       </h1>
@@ -38,11 +38,15 @@
     computed:{ 
       tasks(){
         let tasks = this.$store.state.tasks
+        let groups = {}
+
         if (!tasks) return null
 
-        let groups = {}
+        let sorted = [...tasks].sort((a,b)=> {
+          return a.Group < b.Group ? -1 : 1
+          })
   
-        tasks.forEach(task => {
+        sorted.forEach(task => {
           if(!groups[task.Group]) groups[task.Group] = []
           groups[task.Group].push(task)
         })
