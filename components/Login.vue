@@ -13,7 +13,7 @@
       </div>
 
       <form v-else class="login-form text-center" @submit="handleSubmit" :class="{error}">
-        <input class="w-60 max-w-full" type="text" name="email" required v-model="email" :pattern="pattern" placeholder="Email">
+        <input class="w-60 max-w-full" type="email" name="email" required v-model="email" :pattern="pattern" placeholder="Email">
         <input class="w-60 max-w-full mt-1" type="password" name="password" required v-model="password" placeholder="Password">
         <button class="bg-pink text-white mt-5" type="submit">Submit</button>
       </form>
@@ -30,7 +30,7 @@ export default {
     error:false,
     email:null,
     password:null,
-    pattern: "[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+    pattern: `[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$`
   }),
   methods:{
     async handleSubmit(e){
