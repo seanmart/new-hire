@@ -10,8 +10,6 @@ export default{
   },
   actions:{
     async GET_USER({dispatch,commit},credentials){
-
-      console.log(credentials)
       
       let res = await fetch('/.netlify/functions/get-user',{
         method:'POST',

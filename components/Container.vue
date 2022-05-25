@@ -16,10 +16,6 @@ export default {
     screen: {type:Boolean,default: false},
     center: {type:Boolean,default: false},
     loaded: {type:Boolean,default: true}
-  },
-  async created(){
-    if (process.server) return 
-    console.log(this.$route.query.token)
   }
 }
 </script>
