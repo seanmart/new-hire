@@ -3,7 +3,8 @@
       <div class="flex items-center sm:justify-center px-7 h-20">
 
         <div class="">
-          <SiteLogo class="w-48"/>
+          <!-- <SiteLogo class="w-48"/> -->
+          <h3 class="text-lg font-bold">Client Logo</h3>
         </div>
 
         <div class="absolute top-0 right-0 bottom-0 pr-7 flex items-center">
