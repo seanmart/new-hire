@@ -51,7 +51,6 @@ export default {
   button{
     padding-left:20px;
     padding-right: 20px;
-    font-weight: bold;
   }
   
 </style>

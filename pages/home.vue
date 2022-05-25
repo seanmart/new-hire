@@ -61,7 +61,7 @@
       },
       name(){
         let user = this.$cookiz.get('user')
-        if (user) return user['First Name']
+        if (user) return user.firstName
         return null
       }
     }

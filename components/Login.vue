@@ -3,7 +3,7 @@
 
     <div class="text-center mb-10">
       <h1 class="text-5xl mb-3">Welcome!</h1>
-      <p>Please enter your email address to begin or continue your new hire experience</p>
+      <p>Please login to begin or continue your new hire experience</p>
     </div>
 
     <div class="min-h-3">
