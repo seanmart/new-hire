@@ -3,7 +3,7 @@ export default {
   target: 'server',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'BMS New Hire',
+    title: 'New Hire Site',
     htmlAttrs: {
       lang: 'en'
     },
