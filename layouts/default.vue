@@ -13,11 +13,8 @@ export default {
 
 <style lang="css">
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300;1,400&display=swap');
-
   html{
     font-size: 16px;
-    font-family: 'Nunito', sans-serif;
   }
 
   @media screen and (min-width:600px){
@@ -32,6 +29,7 @@ export default {
   #__layout,
   #__main{
     height:100%;
+    font-family: 'Nunito', sans-serif;
   }
 
   button,
