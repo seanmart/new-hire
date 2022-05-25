@@ -13,7 +13,7 @@ exports.handler = async function (event, context) {
 
   if (user){
 
-    const tasks = await base('Tasks').select({view:'Grouped'}).all()
+    const tasks = await base('Tasks').select().all()
     const completed = await base('Complete').select({filterByFormula: `({Person} = '${user.id}')`}).all()
 
     if (Array.isArray(tasks)){
