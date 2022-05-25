@@ -14,6 +14,9 @@ module.exports = {
   ],
   theme: {
     extend:{
+      screens:{
+        'xs': '500px'
+      },
       colors:{
         emerald: colors.emerald,
         fuchsia: colors.fuchsia,
@@ -26,7 +29,7 @@ module.exports = {
       },
       minHeight:{
         3: '3rem',
-        4: '4rem',
+        4: '4.25rem',
         5: '5rem',
         6: '6rem',
         7: '7rem',

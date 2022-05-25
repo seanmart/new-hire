@@ -5,6 +5,10 @@
         <div class="">
           <SiteLogo class="w-48"/>
         </div>
+
+        <div class="absolute top-0 right-0 bottom-0 pr-7 flex items-center">
+          <nuxt-link class="button hover:bg-fuchsia-100 hover:text-fuchsia-600" to="/">Logout</nuxt-link>
+        </div>
         
       </div>
   </header>

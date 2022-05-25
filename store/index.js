@@ -1,5 +1,3 @@
-
-
 export default{
   state:()=>({
     user:null,
@@ -11,12 +9,14 @@ export default{
     UPDATE_TASK:(state,[index, value]) => state.tasks[index].completed = value
   },
   actions:{
-    async GET_USER({dispatch,commit},email){
+    async GET_USER({dispatch,commit},credentials){
+
+      console.log(credentials)
       
       let res = await fetch('/.netlify/functions/get-user',{
         method:'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email })
+        body: JSON.stringify(credentials)
       })
 
       if(res.ok){
@@ -68,6 +68,6 @@ export default{
     },
     REMOVE_USER({commit}){
       this.$cookiz.remove('user')
-    },
+    }
   }
 }

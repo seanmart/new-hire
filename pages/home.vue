@@ -1,5 +1,5 @@
 <template>
-  <Container class="bg-white" :loaded="!!tasks">
+  <Container class="bg-white" :loaded="render && !!tasks">
     <div class="max-w-3xl mx-auto py-10 sm:px-5">
 
       <h1 class="text-4xl text-center" v-if="name">
@@ -31,10 +31,14 @@
       let user = this.$cookiz.get('user')
       if (user){
         await this.$store.dispatch('GET_TASKS')
+        this.render = true
       } else {
         this.$router.push('/')
       }
     },
+    data:()=>({
+      render: false
+    }),
     computed:{ 
       tasks(){
         let tasks = this.$store.state.tasks
