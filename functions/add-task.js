@@ -41,9 +41,8 @@ exports.handler = async function (event, context) {
       let res = await addData()
       success = res.success 
       error = !!res.error
-      
-    }
 
+    }
   }
   
     return {

@@ -14,10 +14,14 @@ exports.handler = async function (event, context) {
 
   if (password && email){
 
+    console.log(password,email)
+
     const records = await base('People').select({
       filterByFormula: `AND({Email} = '${email}',{Active})`,
       maxRecords:1
     }).all()
+
+    console.log(records)
 
     if(records.length > 0){
 

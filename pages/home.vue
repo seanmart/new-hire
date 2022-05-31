@@ -47,8 +47,8 @@
         if (!tasks) return null
 
         let sorted = [...tasks].sort((a,b)=> {
-          return a.Group < b.Group ? -1 : 1
-          })
+          return a.Group > b.Group ? 1 : -1
+        })
   
         sorted.forEach(task => {
           if(!groups[task.Group]) groups[task.Group] = []
