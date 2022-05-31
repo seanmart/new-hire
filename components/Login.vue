@@ -3,7 +3,7 @@
 
     <div class="text-center mb-10">
       <h1 class="text-5xl mb-3">Welcome!</h1>
-      <p>Please login to begin. test</p>
+      <p>Please login to begin.</p>
     </div>
 
     <div class="min-h-3">
@@ -12,7 +12,7 @@
         <Loading spin/>
       </div>
 
-      <form v-else class="login-form flex flex-col items-center" @submit="handleSubmit" :class="{error}">
+      <form v-else class="login-form flex flex-col items-center" autocomplete="false" @submit="handleSubmit" :class="{error}">
         <input class="w-72 max-w-full" type="email" name="email" v-model="email" placeholder="Email">
         <input class="w-72 max-w-full mt-1" type="password" name="password" required v-model="password" placeholder="Password">
         <button class="bg-pink text-white mt-5" type="submit">Submit</button>
@@ -42,8 +42,8 @@ export default {
       if(user){
         this.$router.push('/home')
       } else {
-        this.email = null
         this.busy = false
+        this.password = null
         this.error = true
       }
     }
